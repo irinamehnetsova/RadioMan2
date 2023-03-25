@@ -200,5 +200,127 @@ public class RadioTest {
 
         Assertions.assertEquals(expected, actual);
     }
+    @Test
+    public void setSpecifiedStation() {
+        Radio radio = new Radio(10);
+        radio.setCurrentStation(5);
+        int expected = 5;
+        int actual = radio.getCurrentStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    public void setMaxStation() {
+        Radio radio = new Radio(10);
+        radio.setCurrentStation(9);
+        int expected = 9;
+        int actual = radio.getCurrentStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    public void setMinStation() {
+        Radio radio = new Radio(10);
+        radio.setCurrentStation(0);
+        int expected = 0;
+        int actual = radio.getCurrentStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    public void setNegativeStation() {
+        Radio radio = new Radio(10);
+        radio.setCurrentStation(-1);
+        int expected = 0;
+        int actual = radio.getCurrentStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    public void setNotValidStation() {
+        Radio radio = new Radio(10);
+        radio.setCurrentStation(10);
+        int expected = 0;
+        int actual = radio.getCurrentStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    public void setMaxSound() {
+        Radio radio = new Radio();
+        radio.setVolumeLevel(100);
+        int expected = 100;
+        int actual = radio.getVolumeLevel();
+
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    public void setMinSound() {
+        Radio radio = new Radio();
+        radio.setVolumeLevel(0);
+        int expected = 0;
+        int actual = radio.getVolumeLevel();
+
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    public void setSpecifiedSound() {
+        Radio radio = new Radio();
+        radio.setVolumeLevel(70);
+        int expected = 70;
+        int actual = radio.getVolumeLevel();
+
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    public void switchSoundZeroToFirst() {
+        Radio radio = new Radio();
+        radio.setVolumeLevel(0);
+        radio.increaseVolume();
+        int expected = 1;
+        int actual = radio.getVolumeLevel();
+
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    public void switchSoundForwardOne() {
+        Radio radio = new Radio();
+        radio.setVolumeLevel(99);
+        radio.increaseVolume();
+        int expected = 100;
+        int actual = radio.getVolumeLevel();
+
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    public void switchSoundMax() {
+        Radio radio = new Radio();
+        radio.setVolumeLevel(100);
+        radio.increaseVolume();
+        int expected = 100;
+        int actual = radio.getVolumeLevel();
+
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    public void removeMaxSound() {
+        Radio radio = new Radio();
+        radio.setVolumeLevel(100);
+        radio.reduceVolume();
+        int expected = 99;
+        int actual = radio.getVolumeLevel();
+
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    public void removeMinSound() {
+        Radio radio = new Radio();
+        radio.setVolumeLevel(0);
+        radio.reduceVolume();
+        int expected = 0;
+        int actual = radio.getVolumeLevel();
+
+        Assertions.assertEquals(expected, actual);
+    }
 
 }
